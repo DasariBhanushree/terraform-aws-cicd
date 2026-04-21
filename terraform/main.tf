@@ -1,12 +1,7 @@
-provider "aws" {
-  region = "ap-south-1"
-}
-
-resource "aws_s3_bucket" "demo_bucket" {
-  bucket = "my-terraform-demo-bucket-990765"
-
-  tags = {
-    Name = "DemoBucket"
-    Environment = "Dev"
+terraform {
+  backend "s3" {
+    bucket = "my-terraform-demo-bucket-990765"
+    key    = "terraform.tfstate"
+    region = "ap-south-1"
   }
 }
