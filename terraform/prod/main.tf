@@ -14,6 +14,6 @@ provider "aws" {
 module "ec2_prod" {
   source = "../modules/ec2"
 
-  instance_type = "t2.small"
+  instance_type = "t2.micro"
   instance_name = "prod-ec2"
 }
