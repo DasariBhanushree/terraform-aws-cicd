@@ -2,6 +2,14 @@ provider "aws" {
   region = "ap-south-1"
 }
 
+terraform {
+  backend "s3" {
+    bucket         = "my-terraform-243-bucket-990765"
+    key            = "dev/terraform.tfstate"
+    region         = "ap-south-1"
+    dynamodb_table = "terraform-lock"
+  }
+
 resource "aws_security_group" "sg" {
   name        = "demo-sg"
   description = "Allow SSH"
