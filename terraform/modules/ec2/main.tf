@@ -5,14 +5,6 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-terraform {
-  backend "s3" {
-    bucket         = "my-terraform-243-bucket-990765"
-    key            = "dev/terraform.tfstate"
-    region         = "ap-south-1"
-    dynamodb_table = "terraform-lock"
-  }
-
 resource "aws_security_group" "sg" {
   name        = "demo-sg"
   description = "Allow SSH"
@@ -33,12 +25,12 @@ resource "aws_security_group" "sg" {
 }
 
 resource "aws_instance" "ec2" {
-  ami           = "ami-0f5ee92e2d63afc18" # Amazon Linux (ap-south-1)
-  instance_type = "var.instance_type"
+  ami           = "ami-0f5ee92e2d63afc18"
+  instance_type = var.instance_type
 
   vpc_security_group_ids = [aws_security_group.sg.id]
 
   tags = {
-    Name = "var.instance_name"
+    Name = var.instance_name
   }
 }
