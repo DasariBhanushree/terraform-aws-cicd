@@ -10,24 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-south-1
-
       - name: Terraform Init
-        run: cd terraform && terraform init
+        run: terraform init
+        working-directory: terraform/dev
+
+      - name: Terraform Format
+        run: terraform fmt -check
+        working-directory: terraform/dev
+
+      - name: Terraform Validate
+        run: terraform validate
+        working-directory: terraform/dev
 
       - name: Terraform Plan
-        run: cd terraform && terraform plan
+        run: terraform plan
+        working-directory: terraform/dev
 
       - name: Terraform Apply
-        run: cd terraform && terraform apply -auto-approve
+        run: terraform apply -auto-approve
+        working-directory: terraform/dev
