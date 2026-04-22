@@ -2,7 +2,7 @@ variable "instance_type" {}
 variable "instance_name" {}
 
 provider "aws" {
-  region = "ap-south-1"
+  region = "us-east-1"
 }
 
 resource "aws_security_group" "sg" {
