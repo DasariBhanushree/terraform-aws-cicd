@@ -13,4 +13,7 @@ provider "aws" {
 
 module "ec2_dev" {
   source = "../modules/ec2"
+
+  instance_type = "t2.micro"
+  instance_name = "dev-ec2"
 }
