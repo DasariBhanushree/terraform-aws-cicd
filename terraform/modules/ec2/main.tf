@@ -1,3 +1,6 @@
+variable "instance_type" {}
+variable "instance_name" {}
+
 provider "aws" {
   region = "ap-south-1"
 }
@@ -31,11 +34,11 @@ resource "aws_security_group" "sg" {
 
 resource "aws_instance" "ec2" {
   ami           = "ami-0f5ee92e2d63afc18" # Amazon Linux (ap-south-1)
-  instance_type = "t2.micro"
+  instance_type = "var.instance_type"
 
   vpc_security_group_ids = [aws_security_group.sg.id]
 
   tags = {
-    Name = "My-EC2"
+    Name = "var.instance_name"
   }
 }
