@@ -25,7 +25,7 @@ resource "aws_security_group" "sg" {
 }
 
 resource "aws_instance" "ec2" {
-  ami           = "ami-0f5ee92e2d63afc18"
+  ami           = "ami-098e39bafa7e7303d"
   instance_type = var.instance_type
 
   vpc_security_group_ids = [aws_security_group.sg.id]
