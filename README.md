@@ -1,4 +1,4 @@
-Hi, I'm BhanuShree 👋
+Hi, I'm BhanuShree 👋 
 
 # Terraform AWS CI/CD Project
 
