@@ -1,5 +1,3 @@
-Hi, I'm BhanuShree 👋 
-
 # Terraform AWS CI/CD Project
 
 ## Project Overview
