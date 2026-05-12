@@ -1,3 +1,7 @@
 output "bucket_name" {
-  value = aws_s3_bucket.demo_bucket.bucket
+  value = "bhanu-terraform-state-bucket"
+}
+
+output "instance_public_ip" {
+  value = module.ec2.instance_public_ip
 }
